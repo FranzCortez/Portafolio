@@ -1,0 +1,35 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header{
+    background-image: url(../img/space6.jpg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    @include m.desktop { 
+        background-position: center center;
+        background-size: 100%;
+    }
+
+    &__title{
+        padding: 2rem;
+        backdrop-filter: blur(30px);
+    }
+
+    &__name{
+        @include m.desktop { 
+            font-size: 5rem;
+        }
+    }
+    &__rol{
+        font-size: large;
+        text-transform: uppercase;
+    }
+}
