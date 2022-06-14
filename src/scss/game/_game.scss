@@ -5,4 +5,11 @@
     background-color: v.$fondoJuego;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+
+    &__title{
+        color: v.$blanco;
+        text-align: center;
+        padding-top: 5rem;
+    }
 }
