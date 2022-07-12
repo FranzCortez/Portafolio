@@ -32,6 +32,10 @@
 
     &__text{
         color: v.$blanco;
+        text-align: center;
+        @include m.tablet { 
+            font-size: 1.8rem;
+        }
     }
 
     &__content-button{
@@ -39,7 +43,7 @@
         flex-direction: column;
         @include m.tablet { 
             flex-direction: row;
-            justify-content: flex-end;
+            justify-content: space-evenly;
             margin-right: 5rem;
         }
     }
@@ -53,13 +57,26 @@
         font-weight: 700;
         font-size: 2.8rem;
         cursor: pointer;
+        transition-property: background-color;
+        transition-duration: .3s;
         @include m.tablet { 
             padding: 0.5rem 2rem;            
             font-size: 1.8rem;
+        }        
+        &:hover{
+            background-color: darken(v.$verde, 10%);
         }
-        
     }
-    &__button:hover{
-        background-color: darken(v.$verde, 10%);
+    &__button--regresar{
+        margin-top: 2rem;
+        background-color: v.$amarillo;
+        text-align: center;
+        &:hover{
+            background-color: darken(v.$amarillo, 10%);
+        }
+        @include m.tablet { 
+            margin-top: 0;
+        }
     }
+    
 }

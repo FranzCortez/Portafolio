@@ -15,14 +15,19 @@ const card12 = document.querySelector('#card12');
 // Modal
 const modal = document.querySelector("#modal");
 const button = document.querySelector('#cerrar');
+const modalEnd = document.querySelector('#modalEnd');
+const points = document.querySelector('#points');
+const titleFinal = document.querySelector('#titleFinal');
+const reload = document.querySelector('#reload');
 
 //Time
 const time = document.querySelector("#time");
 
 let countStart = false;
-const start = 5;
+const start = 1;
 let totalTime = start * 60; 
 let correcta = [];
+let cantCartas = 0;
 let puntos = 0;
 let parejas = [];
 let semaforo = true;
@@ -32,9 +37,11 @@ let cards = [];
 setInterval(countDown, 1000);
 
 document.addEventListener('DOMContentLoaded', (e) => {
+    modalEnd.style.display = "none";
     par();
 
     button.addEventListener('click', () => closeModal());
+    reload.addEventListener('click', () => {window.location.reload()});
 
     card1.addEventListener('click',(e) => selected(e,card1));
     card2.addEventListener('click',(e) => selected(e,card2));
@@ -81,6 +88,10 @@ function selected (e, card) {
 
 function countDown(){
     if(countStart){
+        if(totalTime == '00'){
+            countStart = false;
+            endGame(false);
+        }
         const min = Math.floor(totalTime/60);
         let sec = totalTime % 60;
     
@@ -89,8 +100,20 @@ function countDown(){
         }
     
         time.innerHTML = `${min}:${sec}`;
-        totalTime--;
+        totalTime--;        
     }
+}
+
+function endGame(win) {
+    countStart = false;
+    modalEnd.style.display = "flex";
+
+    if(win){
+        titleFinal.innerHTML = "¡Juego Terminado!";
+    }else{
+        titleFinal.innerHTML = "Se acabo el Tiempo";
+    }
+    points.innerHTML = `Puntos Obtenidos: ${puntos}`;
 }
 
 function comprobate() {
@@ -103,12 +126,20 @@ function comprobate() {
             if (par[x] === correcta[0]) {
                 if( x === 1) {
                     if(par[0] === correcta[1]){
-                        puntos++;
+                        cantCartas++;
+                        puntos += (totalTime*0.5) + cantCartas;
+                        if(cantCartas == 6){
+                            endGame(true);
+                        }
                         return true;
                     }
                 }else {
                     if(par[1] === correcta[1]){
-                        puntos++;
+                        cantCartas++;
+                        puntos += (totalTime*0.5) + cantCartas;
+                        if(cantCartas == 6){
+                            endGame(true);
+                        }
                         return true;
                     }
                 }
