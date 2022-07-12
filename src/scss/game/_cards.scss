@@ -9,14 +9,26 @@
     justify-items: center;
     align-items: center;
     overflow: hidden;
+    @include m.desktop { 
+        padding-top: 3rem;
+        width: 95%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
     &__flip{
         background-color: transparent;
         width: 10rem;
         height: 14rem;
-        border: 1px solid #e1e1e1;
         perspective: 1000px; 
         cursor: pointer;
+        @include m.tablet { 
+            width: 13rem;
+            height: 18rem;
+        }
+        @include m.desktop { 
+            width: 13rem;
+        }
     }
 
     &__flip-inner{
