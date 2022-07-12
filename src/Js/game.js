@@ -12,6 +12,16 @@ const card10 = document.querySelector('#card10');
 const card11 = document.querySelector('#card11');
 const card12 = document.querySelector('#card12');
 
+// Modal
+const modal = document.querySelector("#modal");
+const button = document.querySelector('#cerrar');
+
+//Time
+const time = document.querySelector("#time");
+
+let countStart = false;
+const start = 5;
+let totalTime = start * 60; 
 let correcta = [];
 let puntos = 0;
 let parejas = [];
@@ -19,9 +29,12 @@ let semaforo = true;
 let cards = [];
 
 
+setInterval(countDown, 1000);
+
 document.addEventListener('DOMContentLoaded', (e) => {
-    console.log("inicie")
     par();
+
+    button.addEventListener('click', () => closeModal());
 
     card1.addEventListener('click',(e) => selected(e,card1));
     card2.addEventListener('click',(e) => selected(e,card2));
@@ -47,13 +60,12 @@ function selected (e, card) {
         correcta[correcta.length] = value;
         cards[cards.length] = card;
         
-        console.log(correcta)
 
         if(correcta.length == 2){
             semaforo = false;
             const points = comprobate();
             correcta = [];
-            console.log(puntos)
+            
             if(!points){
                 setTimeout(() => {
                     reset(); 
@@ -64,6 +76,20 @@ function selected (e, card) {
                 semaforo = true;
             }             
         }
+    }
+}
+
+function countDown(){
+    if(countStart){
+        const min = Math.floor(totalTime/60);
+        let sec = totalTime % 60;
+    
+        if(sec < 10){
+            sec = '0' + sec;
+        }
+    
+        time.innerHTML = `${min}:${sec}`;
+        totalTime--;
     }
 }
 
@@ -124,7 +150,6 @@ function par(){
         parejas = [...parejas, final];
     }
 
-    console.log(parejas)
     setImg();
 }
 
@@ -187,8 +212,6 @@ function setImg(){
     const imgList = [option1, option1b, option2, option2b, option3, option3b, option4, option4b, option5, option5b, option6, option6b];
 
     let cont = 0;
-
-    console.log(imgList)
 
     for (let i = 0; i < 6; i++) {
         
@@ -279,9 +302,13 @@ function setImg(){
     }
 }
 
+function closeModal(){
+    modal.style.display = "none";
+    countStart = true;
+}
+
 function reset() {
     for (let i = 0; i < cards.length; i++) {
-        console.log(cards[i])
         cards[i].parentElement.parentElement.parentElement.classList.remove('cards__flip-move');
     }
     cards = [];  

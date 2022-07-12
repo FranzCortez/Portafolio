@@ -2,13 +2,15 @@
 @use 'base/mixins' as m;
 
 .cards{
-    margin-top: 5rem;
+
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     row-gap: 2rem;
     justify-items: center;
     align-items: center;
     overflow: hidden;
+
     @include m.desktop { 
         padding-top: 3rem;
         width: 95%;

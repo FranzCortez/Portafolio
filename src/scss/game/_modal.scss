@@ -1,0 +1,65 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.modal{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    margin: 0 auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &__content{
+        background-color: v.$fondoJuego;
+        margin: 0 auto;
+        padding: 2rem;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    &__title{
+        text-align: center;
+        color: v.$blanco;
+        text-transform: uppercase;
+    }
+
+    &__text{
+        color: v.$blanco;
+    }
+
+    &__content-button{
+        display: flex;
+        flex-direction: column;
+        @include m.tablet { 
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-right: 5rem;
+        }
+    }
+    &__button{
+        text-decoration: none;
+        border: none;
+        background-color: v.$verde;
+        padding: 1rem 2rem;
+        color: v.$fondoJuego;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 2.8rem;
+        cursor: pointer;
+        @include m.tablet { 
+            padding: 0.5rem 2rem;            
+            font-size: 1.8rem;
+        }
+        
+    }
+    &__button:hover{
+        background-color: darken(v.$verde, 10%);
+    }
+}
