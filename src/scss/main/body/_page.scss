@@ -1,0 +1,53 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.page{
+    
+    &__flex{
+        @include m.desktop { 
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            border-bottom: 1px solid #e1e1e1;
+        }
+    }
+
+    &__title{
+        text-align: center;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid #e1e1e1;
+        &:last-child{
+            margin-bottom: 0;
+        }
+
+        @include m.desktop { 
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+    }
+    &__img{
+        transition-property: transform;
+        transition-duration: .3s;
+        &:hover{
+            transform: scale(1.1);
+        }
+        @include m.desktop { 
+            width: 30rem;
+        }
+    }
+    &__text{
+        font-size: 2.8rem;
+        @include m.desktop { 
+            margin-top: 1rem;
+        }
+    }
+}
