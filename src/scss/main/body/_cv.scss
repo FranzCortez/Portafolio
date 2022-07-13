@@ -1,0 +1,65 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.cv{
+    
+    &__title{
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+    
+    &__content{
+        display: flex;
+        justify-content: center;
+        @include m.tablet { 
+            justify-content: space-around;
+        }
+    }
+    &__img{
+        display: none;
+        @include m.tablet { 
+            display: block;
+            width: 30rem;
+        }
+    }
+    &__buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include m.desktop { 
+            flex-direction: row;
+            gap: 2rem;
+        }
+    }
+    &__button{
+        text-decoration: none;
+        color: v.$negro;
+        font-weight: 700;
+        font-size: 2rem;
+        width: 100%;
+        margin-bottom: 2rem;
+        padding: 2rem 4rem;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        @include m.desktop { 
+            margin: 0;
+            text-align: center;
+            width: 25rem;
+        }
+    }
+    &__button--view{
+        background-color: v.$amarillo;
+        &:hover{
+            background-color: darken(v.$amarillo, 10%);
+            color: lighten(v.$negro, 20%);
+        }
+    }
+    &__button--download{
+        background-color: v.$verde;
+        &:hover{
+            color: lighten(v.$negro, 20%);
+            background-color: darken(v.$verde, 10%);
+        }
+    }
+}
