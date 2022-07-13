@@ -39,6 +39,12 @@
         align-items: center;
 
         @include m.tablet { 
+            grid-column: 3/6;
+            width: 40rem;
+            height: 20rem;
+            overflow-y: auto;
+        }
+        @include m.desktop { 
             grid-column: 4/7;
             width: 60rem;
             height: 40rem;
