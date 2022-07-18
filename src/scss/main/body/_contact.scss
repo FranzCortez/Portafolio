@@ -1,0 +1,39 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contact{
+
+    margin-top: 0;
+    padding-top: 0;
+
+    &__title{
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+
+    &__flex{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &__logo-gmail{
+        width: 5rem;  
+        @include m.tablet { 
+            width: 7rem;
+        }      
+    }
+    &__logo-linkedin{
+        width: 10rem;    
+        @include m.tablet { 
+            width: 17rem;
+        }      
+    }
+    &__logo-telefono{
+        width: 5rem;     
+        @include m.tablet { 
+            width: 7rem;
+        }     
+    }
+}
